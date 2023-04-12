@@ -1,0 +1,19 @@
+{
+	"name": "debian-packaging",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "workspace",
+	"workspaceFolder": "/workspace",
+	"remoteEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"earthly.earthfile-syntax-highlighting",
+				"dawidd6.debian-vscode"
+			]
+		}
+	},
+	"remoteUser": "vscode"
+}

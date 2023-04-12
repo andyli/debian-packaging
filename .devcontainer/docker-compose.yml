@@ -1,0 +1,45 @@
+version: '3'
+services:
+  workspace:
+    image: ghcr.io/andyli/debian_packaging_devcontainer:master
+    init: true
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker-host.sock
+      - ./.sbuildrc:/home/vscode/.sbuildrc
+      - ..:/workspace:cached
+      - schroot-session:/var/lib/schroot/session
+      - schroot-union-overlay:/var/lib/schroot/union/overlay
+      - sbuild-build:/var/lib/sbuild/build
+    environment:
+      - EARTHLY_BUILDKIT_HOST=tcp://earthly:8372
+      - EARTHLY_USE_INLINE_CACHE=true
+      - EARTHLY_SAVE_INLINE_CACHE=true
+    user: vscode
+    entrypoint: /usr/local/share/docker-init.sh
+    command: sleep infinity
+  earthly:
+    image: earthly/buildkitd:v0.7.2
+    privileged: true
+    environment:
+      - BUILDKIT_TCP_TRANSPORT_ENABLED=true
+    expose:
+      - 8372
+    volumes:
+      # https://docs.earthly.dev/docs/guides/using-the-earthly-docker-images/buildkit-standalone#earthly_tmp_dir
+      - earthly-tmp:/tmp/earthly:rw
+
+volumes:
+  earthly-tmp:
+  schroot-session:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+  schroot-union-overlay:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+  sbuild-build:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
