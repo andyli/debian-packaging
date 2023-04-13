@@ -25,8 +25,8 @@ A VSCode devcontainer setup for Debian/Ubuntu packaging.
  4. update `debian/changelog` with `dch`, particularly the new version string `1:x.x.x-1`
 
  5. get source archive
-    - `./debian/rules get-orig-source` for new versions
-    - download `haxe_*.orig.tar.gz` from http://deb.debian.org/debian/pool/main/h/haxe/
+    - `./debian/rules get-orig-source` for new versions, or
+    - download `haxe_*.orig.tar.gz` from https://deb.debian.org/debian/pool/main/h/haxe/
 
  6. `sbuild .`
 
