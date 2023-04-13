@@ -1,2 +1,4 @@
 /.tmp-earthly-out*
 /logs
+
+.envrc

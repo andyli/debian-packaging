@@ -14,6 +14,7 @@ devcontainer-base:
     RUN apt-get update \
         && apt-get install -qqy --no-install-recommends apt-utils dialog 2>&1 \
         && apt-get install -qqy \
+            locales \
             iproute2 \
             procps \
             sudo \
@@ -26,6 +27,9 @@ devcontainer-base:
             unzip \
             curl \
             wget \
+            ca-certificates \
+            nano \
+            vim \
             software-properties-common \
             gnupg \
             pbuilder \
@@ -41,6 +45,15 @@ devcontainer-base:
         && apt-get autoremove -y \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/*
+
+    ENV EDITOR /usr/bin/nano
+
+    # setup locale
+    RUN sed -i -e '/en_US.UTF-8/s/^# //g' -e'/C.UTF-8/s/^# //g' /etc/locale.gen \
+        && locale-gen
+    ENV LANG en_US.UTF-8
+    ENV LANGUAGE en_US:en
+    ENV LC_ALL en_US.UTF-8
 
     # create user
     RUN groupadd --gid $USER_GID $USERNAME \
