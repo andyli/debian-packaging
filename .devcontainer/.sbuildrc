@@ -1,11 +1,17 @@
 # Name to use as override in .changes files for the Maintainer: field
 # (mandatory, no default!).
-$maintainer_name='Andy Li <andy@onthewings.net>';
+$maintainer_name=$ENV{DEBFULLNAME}.' <'.$ENV{DEBEMAIL}.'>';
 
 # Default distribution to build.
-$distribution = "sid";
-# Build arch-all by default.
+$distribution = "unstable";
+
 $build_arch_all = 1;
+$build_source = 1;
+$run_lintian = 1;
+$lintian_opts = ['-i', '-I'];
+$run_autopkgtest = 1;
+$autopkgtest_root_args = '';
+$autopkgtest_opts = [ '--', 'schroot', '%r-%a' ];
 
 # When to purge the build directory afterwards; possible values are "never",
 # "successful", and "always".  "always" is the default. It can be helpful

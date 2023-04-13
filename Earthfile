@@ -34,6 +34,9 @@ devcontainer-base:
             gnupg \
             pbuilder \
             ubuntu-dev-tools \
+            lintian \
+            piuparts \
+            autopkgtest \
             apt-file \
             sbuild \
             dh-ocaml \

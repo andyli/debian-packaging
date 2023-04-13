@@ -4,7 +4,7 @@ A VSCode devcontainer setup for Debian/Ubuntu packaging.
 
 # Setup sbuild
 
- 1. `mk-sbuild sid`
+ 1. `mk-sbuild unstable`
 
 # Setup env
 
