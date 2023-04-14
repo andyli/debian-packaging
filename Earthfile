@@ -34,6 +34,7 @@ devcontainer-base:
             gnupg \
             pbuilder \
             ubuntu-dev-tools \
+            git-buildpackage \
             lintian \
             piuparts \
             autopkgtest \
