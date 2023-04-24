@@ -41,6 +41,7 @@ devcontainer-base:
             apt-file \
             sbuild \
             dh-ocaml \
+            socat \
             docker.io \
             direnv \
         && echo 'eval "$(direnv hook bash)"' >> /etc/bash.bashrc \
