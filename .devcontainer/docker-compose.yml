@@ -7,6 +7,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker-host.sock
       - ./.sbuildrc:/home/vscode/.sbuildrc
+      - ./.quiltrc:/home/vscode/.quiltrc
       - ..:/workspace:cached
       - schroot-session:/var/lib/schroot/session
       - schroot-union-overlay:/var/lib/schroot/union/overlay

@@ -4,12 +4,12 @@ A VSCode devcontainer setup for Debian/Ubuntu packaging.
 
 # Setup after starting the devcontainer
 
- * `mk-sbuild unstable`
  * create `.envrc`
     ```sh
     export DEBEMAIL='andy@onthewings.net'
     export DEBFULLNAME='Andy Li'
     ```
+ * `mk-sbuild unstable`
 
 # Updating the Haxe package
 
@@ -42,3 +42,7 @@ A VSCode devcontainer setup for Debian/Ubuntu packaging.
 # Building an existing version of the Haxe package
 
 Similar to the above, but download source archive `haxe_*.orig.tar.gz` from https://deb.debian.org/debian/pool/main/h/haxe/
+
+# Patching
+
+https://wiki.debian.org/UsingQuilt
