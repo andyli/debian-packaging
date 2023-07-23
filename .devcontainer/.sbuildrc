@@ -1,6 +1,6 @@
 # Name to use as override in .changes files for the Maintainer: field
 # (mandatory, no default!).
-$maintainer_name=$ENV{DEBFULLNAME}.' <'.$ENV{DEBEMAIL}.'>';
+# $maintainer_name=$ENV{DEBFULLNAME}.' <'.$ENV{DEBEMAIL}.'>';
 
 # Default distribution to build.
 $distribution = "unstable";
