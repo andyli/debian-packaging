@@ -1,9 +1,16 @@
+# Manpage: https://manpages.debian.org/unstable/sbuild/sbuild.conf.5.en.html
+
 # Name to use as override in .changes files for the Maintainer: field
 # (mandatory, no default!).
 # $maintainer_name=$ENV{DEBFULLNAME}.' <'.$ENV{DEBEMAIL}.'>';
 
 # Default distribution to build.
 $distribution = "unstable";
+
+# https://wiki.ubuntu.com/SimpleSbuild#Temporarily_adding_PPAs
+$extra_repositories = [
+    # "deb [trusted=yes] http://ppa.launchpadcontent.net/onthewings/ocaml/ubuntu jammy main"
+];
 
 $build_arch_all = 0;
 $build_arch_any = 0;

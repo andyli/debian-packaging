@@ -78,3 +78,22 @@ Similar to the above, but download source archive `haxe_*.orig.tar.gz` from http
 # Patching
 
 https://wiki.debian.org/UsingQuilt
+
+
+# backportpackage
+
+https://manpages.debian.org/unstable/ubuntu-dev-tools/backportpackage.1.en.html
+
+```sh
+# $DEST should be a release code name https://wiki.ubuntu.com/Releases
+export DEST=jammy
+# $PPA should be a host name defined in .devcontainer/dput.cf
+export PPA=onthewings-ocaml4.13
+# $DSC_FILE_URL can be found in `https://packages.debian.org/source/unstable/$PACKAGE_NAME`
+export DSC_FILE_URL=http://deb.debian.org/debian/pool/main/d/dh-ocaml/dh-ocaml_2.0.dsc
+
+# edit $extra_repositories in .devcontainer/.sbuildrc if needed
+
+mk-sbuild $DEST
+backportpackage --destination=$DEST --release-pocket --build --upload=$PPA $DSC_FILE_URL
+```

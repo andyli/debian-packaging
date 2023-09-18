@@ -6,9 +6,12 @@ services:
     privileged: true
     volumes:
       - /var/run/docker.sock:/var/run/docker-host.sock
+      - ./.devscripts:/home/vscode/.devscripts
       - ./.sbuildrc:/home/vscode/.sbuildrc
       - ./.quiltrc:/home/vscode/.quiltrc
+      - ./dput.cf:/home/vscode/.config/dput/dput.cf
       - ..:/workspace:cached
+      - ../../debian:/workspace/projects:cached
       - schroot-session:/var/lib/schroot/session
       - schroot-union-overlay:/var/lib/schroot/union/overlay
       - sbuild-build:/var/lib/sbuild/build

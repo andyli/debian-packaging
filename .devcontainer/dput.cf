@@ -1,0 +1,15 @@
+# https://manpages.debian.org/unstable/dput/dput.cf.5.en.html
+
+[onthewings-ocaml4.13]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~onthewings/ubuntu/ocaml4.13/
+login = anonymous
+allow_unsigned_uploads = 0
+
+[onthewings-releases]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~onthewings/ubuntu/releases/
+login = anonymous
+allow_unsigned_uploads = 0

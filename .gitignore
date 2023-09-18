@@ -10,3 +10,5 @@
 /projects/*.changes
 /projects/*.debian.tar.xz
 /projects/*.upload
+
+*.asc
