@@ -19,6 +19,7 @@ devcontainer-base:
             procps \
             sudo \
             bash-completion \
+            aptitude \
             build-essential \
             pkg-config \
             cmake \
