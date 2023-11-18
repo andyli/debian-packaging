@@ -16,6 +16,9 @@ $extra_repositories = [
 # https://unix.stackexchange.com/questions/298001/building-with-sbuild-and-backports
 $build_dep_resolver = 'aptitude';
 
+# Set it to 1 if uploading a new version not yet in any distro to PPA.
+# $force_orig_source = 1;
+
 $build_arch_all = 0;
 $build_arch_any = 0;
 $build_source = 1;
