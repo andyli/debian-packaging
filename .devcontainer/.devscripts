@@ -2,4 +2,4 @@
 # https://manpages.debian.org/unstable/ubuntu-dev-tools/ubuntu-dev-tools.5.en.html
 
 BACKPORTPACKAGE_BUILDER=sbuild
-BACKPORTPACKAGE_WORKDIR=backports
+BACKPORTPACKAGE_WORKDIR=/workspace/backports
