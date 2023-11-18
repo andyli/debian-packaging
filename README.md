@@ -2,6 +2,16 @@
 
 A VSCode devcontainer setup for Debian/Ubuntu packaging.
 
+# WSL config
+
+If WSL is used, make sure gpg works.
+
+```
+echo "test" | gpg --clearsign
+```
+
+https://www.39digits.com/signed-git-commits-on-wsl2-using-visual-studio-code
+
 # Setup after starting the devcontainer
 
  * create `.envrc`, replace the values as appropriate
