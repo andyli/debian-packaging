@@ -1,13 +1,11 @@
-VERSION 0.6
+VERSION 0.8
 ARG DEBIAN_VERSION=sid
 FROM debian:$DEBIAN_VERSION
-ARG DEVCONTAINER_IMAGE_NAME_DEFAULT=ghcr.io/andyli/debian_packaging_devcontainer
+ARG --global DEVCONTAINER_IMAGE_NAME_DEFAULT=ghcr.io/andyli/debian_packaging_devcontainer
 
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-ARG TARGETARCH
+ARG --global USERNAME=vscode
+ARG --global USER_UID=1000
+ARG --global USER_GID=$USER_UID
 
 devcontainer-base:
     ENV DEBIAN_FRONTEND=noninteractive
@@ -83,7 +81,8 @@ devcontainer-base:
 # RUN earthly bootstrap --no-buildkit --with-autocomplete
 earthly:
     FROM +devcontainer-base
-    RUN curl -fsSL https://github.com/earthly/earthly/releases/download/v0.7.2/earthly-linux-${TARGETARCH} -o /usr/local/bin/earthly \
+    ARG TARGETARCH
+    RUN curl -fsSL "https://github.com/earthly/earthly/releases/download/v0.8.5/earthly-linux-${TARGETARCH}" -o /usr/local/bin/earthly \
         && chmod +x /usr/local/bin/earthly
     SAVE ARTIFACT /usr/local/bin/earthly
 
