@@ -6,9 +6,11 @@
 /projects/*.tar.gz
 /projects/*.dsc
 /projects/*.deb
+/projects/*.ddeb
 /projects/*.buildinfo
 /projects/*.changes
 /projects/*.debian.tar.xz
 /projects/*.upload
+/projects/*.build
 
 *.asc
