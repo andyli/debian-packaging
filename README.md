@@ -35,7 +35,7 @@ sudo sbuild-update --upgrade unstable
 
  2. `git clone git@github.com:HaxeFoundation/haxe-debian.git`
 
- 3. `cd haxe`
+ 3. `cd haxe-debian`
 
  4. update `debian/changelog` with `dch`, particularly the new version string `1:x.x.x-1`
 
