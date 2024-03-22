@@ -103,7 +103,9 @@ export DEST=jammy
 # $PPA should be a host name defined in .devcontainer/dput.cf
 export PPA=onthewings-ocaml
 
-# edit $extra_repositories in .devcontainer/.sbuildrc if needed
+# edit .devcontainer/.sbuildrc if needed:
+# - set $extra_repositories to use ubuntu backports and/or PPA
+# - set $force_orig_source = 1 if it's a new version
 
 mk-sbuild $DEST
 backportpackage --source=$SOURCE --destination=$DEST --release-pocket --build --upload=$PPA

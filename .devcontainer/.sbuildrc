@@ -22,6 +22,7 @@ $build_dep_resolver = 'aptitude';
 $build_arch_all = 0;
 $build_arch_any = 0;
 $build_source = 1;
+$force_orig_source = 0; # set to 1 to force include the .orig.tar.gz in the .changes file
 $run_lintian = 1;
 $lintian_opts = ['-i', '-I'];
 $run_autopkgtest = 1;
