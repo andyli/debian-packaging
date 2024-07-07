@@ -85,6 +85,8 @@ sudo sbuild-update --upgrade unstable
 
 Similar to the above, but download source archive `haxe_*.orig.tar.gz` from https://deb.debian.org/debian/pool/main/h/haxe/
 
+[`gbp export-orig`](https://manpages.debian.org/unstable/git-buildpackage/gbp-export-orig.1.en.html) can also generate the source archive from git repo.
+
 # Patching
 
 https://wiki.debian.org/UsingQuilt
