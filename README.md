@@ -14,6 +14,7 @@ https://www.39digits.com/signed-git-commits-on-wsl2-using-visual-studio-code
 
 # Setup after starting the devcontainer
 
+ * update `.devcontainer/timezone` to your local timezone, if wanted
  * create `.envrc`, replace the values as appropriate
     ```sh
     export DEBEMAIL='andy@onthewings.net'

@@ -10,6 +10,7 @@ services:
       - ./.sbuildrc:/home/vscode/.sbuildrc
       - ./.quiltrc:/home/vscode/.quiltrc
       - ./dput.cf:/home/vscode/.config/dput/dput.cf
+      - ./timezone:/etc/timezone
       - ..:/workspace:cached
       - ../../debian:/workspace/projects:cached
       - schroot-session:/var/lib/schroot/session
