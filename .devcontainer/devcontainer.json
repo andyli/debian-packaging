@@ -11,7 +11,7 @@
 			"extensions": [
 				"ms-azuretools.vscode-docker",
 				"earthly.earthfile-syntax-highlighting",
-				"dawidd6.debian-vscode"
+				"jdemille.debian-control-vscode"
 			]
 		}
 	},
