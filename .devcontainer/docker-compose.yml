@@ -19,6 +19,7 @@ services:
     environment:
       - EARTHLY_USE_INLINE_CACHE=true
       - EARTHLY_SAVE_INLINE_CACHE=true
+      - GIT_EDITOR=code --wait
     user: vscode
     entrypoint: /usr/local/share/docker-init.sh
     command: sleep infinity
