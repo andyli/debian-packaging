@@ -1,6 +1,7 @@
 {
     "terminal.integrated.scrollback": 100000,
     "[debian-changelog]": {
-        "editor.rulers": [80]
+        "editor.rulers": [80],
+        "files.trimTrailingWhitespace": true
     },
 }
