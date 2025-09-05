@@ -2,9 +2,15 @@
 
 $chroot_mode = 'unshare';
 
-$external_commands = { "build-failed-commands" => [ [ '%SBUILD_SHELL' ] ] };
+$external_commands = {
+    "build-failed-commands" => [ [ '%SBUILD_SHELL' ] ]
+};
 
-push @{$unshare_mmdebstrap_extra_args}, "*", ['--aptopt=Acquire::http { Proxy "http://127.0.0.1:3142"; }'];
+# keep the chroot tarball at ~/.cache/sbuild/
+$unshare_mmdebstrap_keep_tarball = 1;
+
+# use apt-cacher-ng from docker-compose
+push @{$unshare_mmdebstrap_extra_args}, "*", ['--aptopt=Acquire::http { Proxy "http://apt-proxy:3142"; }'];
 
 # Default distribution to build.
 $distribution = "unstable";

@@ -16,5 +16,7 @@
 		}
 	},
 	"remoteUser": "vscode",
-	"postStartCommand": "sudo apt-cacher-ng"
+
+	// autopkgtest wants /dev/console
+	"postStartCommand": "sudo ln -s /dev/tty0 /dev/console"
 }

@@ -11,6 +11,7 @@ services:
       - ./.quiltrc:/home/vscode/.quiltrc
       - ./dput.cf:/home/vscode/.config/dput/dput.cf
       - ./timezone:/etc/timezone
+      - ./99proxy:/etc/apt/apt.conf.d/99proxy
       - ..:/workspace:cached
       - ../../debian:/workspace/projects:cached
       - schroot-session:/var/lib/schroot/session
@@ -23,6 +24,13 @@ services:
     user: vscode
     entrypoint: /usr/local/share/docker-init.sh
     command: sleep infinity
+  apt-proxy:
+    image: ghcr.io/andyli/debian_packaging_apt-cacher-ng:latest
+    init: true
+    expose:
+      - 3142
+    volumes:
+      - apt-cacher-ng:/var/cache/apt-cacher-ng
 
 volumes:
   schroot-session:
@@ -37,3 +45,4 @@ volumes:
     driver_opts:
       type: tmpfs
       device: tmpfs
+  apt-cacher-ng:

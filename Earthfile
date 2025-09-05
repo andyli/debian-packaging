@@ -74,9 +74,6 @@ devcontainer-base:
 
     RUN install -d -o $USERNAME -g $USERNAME /home/$USERNAME/.cache/sbuild
 
-    # autopkgtest wants /dev/console
-    RUN ln -s /dev/tty0 /dev/console
-
     # Setting the ENTRYPOINT to docker-init.sh will configure non-root access 
     # to the Docker socket. The script will also execute CMD as needed.
     COPY .devcontainer/docker-init.sh /usr/local/share/
@@ -119,6 +116,20 @@ devcontainer:
     ARG IMAGE_TAG="master"
     ARG IMAGE_CACHE="$IMAGE_NAME:$IMAGE_TAG"
     SAVE IMAGE --cache-from="$IMAGE_CACHE" --push "$IMAGE_NAME:$IMAGE_TAG"
+
+apt-cacher-ng:
+    ENV DEBIAN_FRONTEND=noninteractive
+    RUN apt-get update \
+        && apt-get install -qqy \
+            apt-cacher-ng \
+        #
+        # Clean up
+        && apt-get autoremove -y \
+        && apt-get clean -y \
+        && rm -rf /var/lib/apt/lists/*
+    CMD [ "apt-cacher-ng", "foreground=1" ]
+    EXPOSE 3142
+    SAVE IMAGE --push "ghcr.io/andyli/debian_packaging_apt-cacher-ng:latest"
 
 ci-images:
     ARG --required GIT_REF_NAME
