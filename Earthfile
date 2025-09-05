@@ -39,6 +39,10 @@ devcontainer-base:
             autopkgtest \
             apt-file \
             sbuild \
+            mmdebstrap \
+            uidmap \
+            zstd \
+            apt-cacher-ng \
             dh-ocaml \
             socat \
             docker.io \
@@ -64,8 +68,14 @@ devcontainer-base:
         && useradd -s /bin/bash --uid $USER_UID --gid $USERNAME -m $USERNAME \
         && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
         && chmod 0440 /etc/sudoers.d/$USERNAME \
+        && usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USERNAME \
         && usermod -G docker -a $USERNAME \
         && adduser $USERNAME sbuild
+
+    RUN install -d -o $USERNAME -g $USERNAME /home/$USERNAME/.cache/sbuild
+
+    # autopkgtest wants /dev/console
+    RUN ln -s /dev/tty0 /dev/console
 
     # Setting the ENTRYPOINT to docker-init.sh will configure non-root access 
     # to the Docker socket. The script will also execute CMD as needed.

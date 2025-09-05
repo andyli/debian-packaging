@@ -1,8 +1,10 @@
 # Manpage: https://manpages.debian.org/unstable/sbuild/sbuild.conf.5.en.html
 
-# Name to use as override in .changes files for the Maintainer: field
-# (mandatory, no default!).
-# $maintainer_name=$ENV{DEBFULLNAME}.' <'.$ENV{DEBEMAIL}.'>';
+$chroot_mode = 'unshare';
+
+$external_commands = { "build-failed-commands" => [ [ '%SBUILD_SHELL' ] ] };
+
+push @{$unshare_mmdebstrap_extra_args}, "*", ['--aptopt=Acquire::http { Proxy "http://127.0.0.1:3142"; }'];
 
 # Default distribution to build.
 $distribution = "unstable";
@@ -16,18 +18,19 @@ $extra_repositories = [
 # https://unix.stackexchange.com/questions/298001/building-with-sbuild-and-backports
 $build_dep_resolver = 'aptitude';
 
-# Set it to 1 if uploading a new version not yet in any distro to PPA.
-# $force_orig_source = 1;
-
-$build_arch_all = 0;
-$build_arch_any = 0;
+$build_arch_all = 1;
 $build_source = 1;
+$source_only_changes = 1;
 $force_orig_source = 0; # set to 1 to force include the .orig.tar.gz in the .changes file
+
 $run_lintian = 1;
-$lintian_opts = ['-i', '-I'];
+$lintian_opts = ['--display-info', '--verbose', '--fail-on', 'error,warning', '--info'];
+
 $run_autopkgtest = 1;
-$autopkgtest_root_args = '';
-$autopkgtest_opts = [ '--', 'schroot', '%r-%a' ];
+$autopkgtest_opts = ['--apt-upgrade', '--', 'unshare', '--release', '%r', '--arch', '%a' ];
+
+$run_piuparts = 1;
+$piuparts_opts = ['--no-eatmydata', '--distribution=%r', '--fake-essential-packages=systemd-sysv'];
 
 # When to purge the build directory afterwards; possible values are "never",
 # "successful", and "always".  "always" is the default. It can be helpful
@@ -37,12 +40,6 @@ $autopkgtest_opts = [ '--', 'schroot', '%r-%a' ];
 $purge_build_directory = 'successful';
 $purge_session = 'successful';
 $purge_build_deps = 'successful';
-# $purge_build_directory = 'never';
-# $purge_session = 'never';
-# $purge_build_deps = 'never';
 
 # Directory for writing build logs to
 $log_dir="/workspace/logs";
-
-# don't remove this, Perl needs it:
-1;

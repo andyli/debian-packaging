@@ -15,5 +15,6 @@
 			]
 		}
 	},
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"postStartCommand": "sudo apt-cacher-ng"
 }

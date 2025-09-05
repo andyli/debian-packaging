@@ -20,14 +20,14 @@ https://www.39digits.com/signed-git-commits-on-wsl2-using-visual-studio-code
     export DEBEMAIL='andy@onthewings.net'
     export DEBFULLNAME='Andy Li'
     ```
- * `mk-sbuild unstable`
+ * `mmdebstrap --include=ca-certificates --skip=output/dev --variant=buildd unstable ~/.cache/sbuild/unstable-amd64.tar.zst https://deb.debian.org/debian`
  * `git config --global --add safe.directory '*'` to avoid `git`/`gbp` triggering `fatal: detected dubious ownership in repository`
 
 # Update sbuild
 
 ```sh
-sudo sbuild-update unstable
-sudo sbuild-update --upgrade unstable
+rm ~/.cache/sbuild/*
+# re-run mmdebstrap in the setup section
 ```
 
 # Updating the Haxe package
